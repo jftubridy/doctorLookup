@@ -4,7 +4,7 @@
 ---
 
 ## Description
-*
+*  I don't understand API stuff yet, going to have to keep working on this this weekend.
 
 
 ## Technologies Used
