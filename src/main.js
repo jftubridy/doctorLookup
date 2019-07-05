@@ -4,61 +4,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import { tamagotchi } from './docLookup.js';
 
-let grylls = tamagotchi;
+// let grylls = tamagotchi;
 
-// $(document).ready(function() {
-//   $('#feedTamagotchi').click(function(event) {
-//     event.preventDefault();
-//     console.log("before "+grylls.foodLevel);
-//     grylls.feed(10);
-//     $('#hungerLevel').prepend("<div> The tamagotchi's hunger level is " + grylls.foodLevel +"</div>");
-//     console.log("after "+grylls.foodLevel);
-//   });
-//
-//   $('#feedTama').click(function() {
-//     grylls.eatMedium();
-    // -----grylls.feed(12); --- broken because somehow not a function
-  // });
-  // function isAliveCheck() {
-  //   if (grylls.foodLevel <= 0) {
-  //     $('#death').append('\u{1F480}');
-  //     console.log('dead');
-  //     return new Error("You're dead, food level too low");
-  //   } else if (grylls.foodLevel >= 100){
-  //     alert("Your Tamagotchi had an accident"+'\u{1F4A9}');
-  //     $('#floor').append('\u{1F4A9}');
-  //     return grylls.foodLevel = 100;
-  //   } else {
-  //     return true;
-  //   }
-  // }
+$(document).ready(function() {
+$('#docName').click(function() {
+  let name = $('#docName').val();
+  $('#docName').val("");
+  $.ajax({
+    url: `https://api.betterdoctor.com/2016-03-01/doctors?name=doom&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&sort=rating-desc&skip=0&limit=10&user_key=${exports.apiKey}`,
 
-  // ------it will check for low food level, output hunger bar,
-  // ------also maybe update food level every second
-  //let update_loop = setInterval(secCheck, 1000);
-  //-----decrement food foodLevel
-
-  //function secCheck(){
-    // -----updating the progress bar
-//     grylls.setHunger();
-//     let danger;
-//     if(grylls.foodLevel <= 20){
-//       danger = "bg-danger";
-//     }else{
-//       danger = "bg-success";
-//     }
-//     $('#outputHungerLevel').html(`<div class="progress-bar ${danger} progress-bar-striped progress-bar-animated" aria-valuenow="${grylls.foodLevel}"; style="width:${grylls.foodLevel}%;height:20px">${grylls.foodLevel}%</div>`);
-//     try {
-//       const isAlive = isAliveCheck();
-//       if (isAlive instanceof Error) {
-//         console.error(isAlive.message);
-//         throw RangeError("foodLevel too low");
-//       }else {
-//         console.log("you're safe");
-//       }
-//     } catch (error) {
-//       console.error(`Red alert! We have an error: ${error.message}`);
-//       clearInterval(update_loop);
-//     }
-//   }
-// });
+//     http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=462946d0a52b8ba2f2ec97b1a4ca72e7
+// ,
+    type: 'GET',
+    data: {
+      format: 'json'
+    },
+    success: function(response) {
+      $('.doc-template').text(`Information for ${name} is ${response.data}%`);
+     // $('.showTemp').text(`The temperature in Kelvins is ${response.main.temp}.`);
+    },
+    error: function() {
+      $('#errors').text("There was an error processing your request. Please try again.");
+    }
+  });
+});
+});
