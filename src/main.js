@@ -61,7 +61,4 @@ let grylls = tamagotchi;
 //       clearInterval(update_loop);
 //     }
 //   }
-//
-//
-//
 // });
