@@ -16,8 +16,3 @@ export class DocSearch {
     });
   }
 }
-// $.get(resource_url, function (data) {
-//   // data: { meta: {<metadata>}, data: {<array[Practice]>} }
-//   var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
-//   document.getElementById('content-placeholder').innerHTML = template(data);
-// });
