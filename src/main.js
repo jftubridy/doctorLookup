@@ -19,12 +19,17 @@ $(document).ready(function () {
     showDoc.then(function (response) {
 
       let body = JSON.parse(response);
-      for (let i = 0; i < body.data.length; i++) {
-        let fullName = `${body.data[i].profile.first_name} ${body.data[i].profile.last_name}`;
-        let address = `${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.zip}`;
+      if (body.data.length == 0) {
+        $('.errors').text("I'm sorry no doctors matched with your search");
+      }
+      else {
+        for (let i = 0; i < body.data.length; i++) {
+          let fullName = `${body.data[i].profile.first_name} ${body.data[i].profile.last_name}`;
+          let address = `${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.zip}`;
 
-        $('.showDoc').append(`Name: ${fullName} <br>
+          $('.showDoc').append(`Name: ${fullName} <br>
           Address: ${address}<br><br>`);
+        }
       }
     },
       function (error) {
