@@ -5,7 +5,8 @@ import './styles.css';
 import { DocSearch } from './docLookup.js';
 
 $(document).ready(function () {
-  $('#search').click(function () {
+  $('.searchForm').click(function (event) {
+    event.preventDefault();
     let docName = $('#docName').val();
     $('#docName').val("");
     let specialty = $('#specialty').val();
@@ -13,20 +14,17 @@ $(document).ready(function () {
 
     let search = new DocSearch();
 
-    let promise = search.docSearch(docName, specialty);
+    let showDoc = search.docSearch(docName, specialty);
 
-    promise.then(function (response) {
+    showDoc.then(function (response) {
 
       let body = JSON.parse(response);
-
       for (let i = 0; i < body.data.length; i++) {
+        let address = `${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.street2}, ${body.data[i].practices[0].visit_address.zip}`;
 
         $('.showDoc').append(`Name: ${body.data[i].practices.name}<br>
-
-      Specialty: ${body.data[i].specialties.uid}: ${body.data[i].specialties.description} <br>
-       Address: ${body.data[i].practices[0].visit_address.city} <br>
-       ${body.data[i].practices[0].visit_address[0].street[0]} >br>
-       ${body.data[i].practices[0].visit_address[0].street2[0]} ${body.data[i].practices[0].visit_address[0].zip[0]}`);
+          Specialty: ${body.data[i].specialties.uid}: ${body.data[i].specialties.description} <br>
+          Address: ${address}`);
       }
     },
       function (error) {

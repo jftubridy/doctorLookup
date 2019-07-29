@@ -1,5 +1,6 @@
 //export  docSearch = (docName, specialty); {
 export class DocSearch {
+
   docSearch(docName, specialty) {
     return new Promise(function (resolve, reject) {
       let request = new XMLHttpRequest();
