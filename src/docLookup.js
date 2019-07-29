@@ -4,7 +4,7 @@ export class DocSearch {
   docSearch(docName, specialty) {
     return new Promise(function (resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${docName}&specialty_uid=${specialty}&user_location=47.6062%2C%20122.3321&skip=0&limit=10&user_key=${process.env.exports.apiKey}`;//when I have the api as process.env.apiKey it gives me a 401 unauthorized error message
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${docName}&specialty_uid=${specialty}&user_location=47.6062%2C%20122.3321&skip=0&limit=10&user_key=${process.env.apiKey}`;//when I have the api as process.env.apiKey it gives me a 401 unauthorized error message
       request.onload = function () {
         if (this.status === 200) {
           resolve(request.response);

@@ -8,9 +8,9 @@ $(document).ready(function () {
   $('.searchForm').submit(function (event) {
     event.preventDefault();
     let docName = $('#docName').val();
-    $('#docName').val("");
+    //$('#docName').val("");
     let specialty = $('#specialty').val();
-    $('#specialty').val("");
+    //$('#specialty').val("");
 
     let search = new DocSearch();
 
