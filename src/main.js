@@ -23,10 +23,10 @@ $(document).ready(function () {
 
         $('.showDoc').append(`Name: ${body.data[i].practices.name}<br>
 
-      ${body.data[i].specialties.uid}: ${body.data[i].specialties.description} <br>
-       ${body.data[i].practices.visit_address.city} <br>
-       ${body.data[i].practices.visit_address.street} >br>
-       ${body.data[i].practices.visit_address.street2} ${body.data[i].practices.visit_address.zip}`);
+      Specialty: ${body.data[i].specialties.uid}: ${body.data[i].specialties.description} <br>
+       Address: ${body.data[i].practices[0].visit_address.city} <br>
+       ${body.data[i].practices[0].visit_address[0].street[0]} >br>
+       ${body.data[i].practices[0].visit_address[0].street2[0]} ${body.data[i].practices[0].visit_address[0].zip[0]}`);
       }
     },
       function (error) {
