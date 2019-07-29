@@ -9,23 +9,21 @@ $(document).ready(function () {
     event.preventDefault();
     let docName = $('#docName').val();
     //$('#docName').val("");
-    let specialty = $('#specialty').val();
-    //$('#specialty').val("");
+    let reason = $('#reason').val();
+    //$('#reason').val("");
 
     let search = new DocSearch();
 
-    let showDoc = search.docSearch(docName, specialty);
+    let showDoc = search.docSearch(docName, reason);
 
     showDoc.then(function (response) {
 
       let body = JSON.parse(response);
       for (let i = 0; i < body.data.length; i++) {
         let fullName = `${body.data[i].profile.first_name} ${body.data[i].profile.last_name}`;
-        let address = `City: ${body.data[i].practices[0].visit_address.city}, Street: ${body.data[i].practices[0].visit_address.street} Zip: ${body.data[i].practices[0].visit_address.zip}`;
-        let specialty = `${body.data[i].specialties.uid} ${body.data[i].specialties.description}`;
+        let address = `${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.zip}`;
 
         $('.showDoc').append(`Name: ${fullName} <br>
-        Specialty: ${specialty} ${body.data[i].specialties.description} <br>
           Address: ${address}<br><br>`);
       }
     },
