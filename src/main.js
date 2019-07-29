@@ -20,11 +20,13 @@ $(document).ready(function () {
 
       let body = JSON.parse(response);
       for (let i = 0; i < body.data.length; i++) {
-        let address = `${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.street2}, ${body.data[i].practices[0].visit_address.zip}`;
+        let fullName = `${body.data[i].practices.name}`;
+        let address = `${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.street} ${body.data[i].practices[0].visit_address.street2} ${body.data[i].practices[0].visit_address.zip}`;
+        let specialty = `${body.data[i].specialties.uid}`;
 
-        $('.showDoc').append(`Name: ${body.data[i].practices.name}<br>
-          Specialty: ${body.data[i].specialties.uid}: ${body.data[i].specialties.description} <br>
-          Address: ${address}`);
+        $('.showDoc').append(`Name: ${fullName} <br>
+        Specialty: ${specialty} ${body.data[i].specialties.description} <br>
+          Address: ${address}<br><br>`);
       }
     },
       function (error) {
