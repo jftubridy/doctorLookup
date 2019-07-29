@@ -5,7 +5,7 @@ import './styles.css';
 import { DocSearch } from './docLookup.js';
 
 $(document).ready(function () {
-  $('.searchForm').click(function (event) {
+  $('.searchForm').submit(function (event) {
     event.preventDefault();
     let docName = $('#docName').val();
     $('#docName').val("");
@@ -25,7 +25,7 @@ $(document).ready(function () {
         let specialty = `${body.data[i].specialties.uid} ${body.data[i].specialties.description}`;
 
         $('.showDoc').append(`Name: ${fullName} <br>
-        Specialty: ${specialty}<br>
+        Specialty: ${specialty} ${body.data[i].specialties.description} <br>
           Address: ${address}<br><br>`);
       }
     },
