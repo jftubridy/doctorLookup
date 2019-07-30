@@ -1,4 +1,3 @@
-//export  docSearch = (docName, specialty); {
 export class DocSearch {
 
   docSearch(docName, reason) {

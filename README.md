@@ -1,31 +1,34 @@
 # Doctor Lookup
 ### By Joseph Tubridy
 
----
-
 ## Description
-*  I don't understand API stuff yet, going to have to keep working on this this weekend.
-
-
-## Technologies Used
-* JavaScript
-* JQuery
-* HTML5
-* CSS
-* Bootsrap
-* Webpack
-
-## Installation
-* Clone repo, from the root directory, if using mac change "start": "npm run build && webpack-dev-server" in package.json to "npm run build; webpack-dev-server", install dependencies.
-
-```sh
-$ git clone
-$ cd doctorLookup
-$ npm install
-```
+*  _This is a webpage for me to practice calling an API._
 
 ## Specs
 
 | Behaviors       | Input          | Output      |
 | ---------------- |:------------:| :--------------:|
-| When click on  | click on  | does |
+| Search for Doctors by name or your ailment  | Input name or Ailment  | Outputs Doctors |
+
+## Setup/Installation Requirements
+
+* _Clone this repository._
+* _Get an api key from https://developer.betterdoctor.com/_
+* _Type "npm install" in your console._
+
+## Known Bugs
+
+_There are no known bugs at this time._
+
+## Technologies Used
+
+_JavaScript_
+_JQuery_
+_npm_
+_BetterDoctor API_
+
+### License
+
+*This is licensed under the MIT License.*
+
+Copyright (c) 2019 **_Joseph Tubridy_**
